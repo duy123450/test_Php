@@ -1,0 +1,21 @@
+# Rewrite URL
+RewriteEngine on
+RewriteCond %{QUERY_STRING} ^mod=news&id=1$
+RewriteRule ^index\.php$ news/1.html? [L]
+
+# Block IP: 234.45 and allow all others
+<RequireAll>
+    Require all granted
+    Require not ip 234.45
+</RequireAll>
+
+# Prevent hotlinking of images and videos
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?duy\.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif|webp|mp4)$ - [F,NC,L]
+
+# Change main page to myindex.php instead of index.php
+DirectoryIndex myindex.php
+
+# Prevent directory listing
+Options -Indexes

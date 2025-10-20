@@ -1,0 +1,5 @@
+/* CSS Document */
+
+#container{width:90%; margin:0 auto}
+#container div.book{width:300px; margin:3px; background:#0FF; float:left; height:320px;}
+div.book img{width:250px; height:250px;}

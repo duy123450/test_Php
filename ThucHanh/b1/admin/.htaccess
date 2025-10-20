@@ -1,0 +1,5 @@
+# Password protection for admin directory
+AuthType Basic
+AuthName "Restricted Area"
+AuthUserFile "C:/wamp64/www/b1/.htpasswd"
+Require valid-user

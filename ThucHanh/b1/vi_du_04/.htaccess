@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteRule ^index.html$ example01.php [L]
+#RewriteRule ^(.*)\.php$ /$1.html [R=301,L]
+ErrorDocument 404 "<body bgcolor=#ff0000><h1>Trang khong ton tai!"
+#ErrorDocument 404 /Error/404.html
