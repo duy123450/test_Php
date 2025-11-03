@@ -10,6 +10,7 @@
 // const PI=3.14;
 define("PI",3.14);
 $r=10;
+echo "Có thể thay thế const PI=3.14 bằng define('PI',3.14); " . "<br/>";
 echo "Diện tích hình tròn có bán kính $r là: ".($r*$r*PI);
 echo "<br>4.2. Có thể thay thế const PI=3.24 -> define('PI',3.14)";
 ?>

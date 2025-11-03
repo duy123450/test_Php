@@ -7,9 +7,11 @@
 
 <body>
 <?php
-	include("lab2_5a.php");
+	// include("lab2_5a.php");
 	
-
+	echo "Khi comment dòng 10 trong lab2_5a.php lại thì sẽ báo lỗi<br/>";
+	echo "File lab2_5a.php không được nhúng vào, nên biến $x không được tạo.";
+	
 	if(isset($x))
 		echo "Giá trị của x là: $x";
 	else

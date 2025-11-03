@@ -11,10 +11,9 @@ $a=1;
 $kq=0;
 function f()
 {
-	$GLOBALS['b']=2;
-    // Xoa bo global kq=0 => khong ho tro trinh duyet ben ngoai
-	$kq = 0;
-	$kq=$GLOBALS['a']+$GLOBALS['b'];
+	global $b, $kq, $a;
+	$b = 2;
+	$kq = $a + $b;
 }
 f();
 echo "a = $a<br/>";

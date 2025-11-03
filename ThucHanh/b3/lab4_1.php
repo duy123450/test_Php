@@ -14,6 +14,6 @@
 
 	echo "Kết quả S = 2 + 4 + 6 + ... + 100 <br/>";
 	echo "Tính bằng FOR, S1 = $s1 <br/>";
- ?>
+?>
 </body>
 </html> 

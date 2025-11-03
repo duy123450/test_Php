@@ -20,7 +20,8 @@
 	Nhưng báo lỗi vì biến x chưa được khởi tạo. 
 	Dòng include thứ nhất, x chưa tồn tại, x += 10; 
 	tương đương x = null + 10 => x = 10. 
-	Dòng include thứ 2, vì x = 10, nên x += 10 => x = 20.";
+	Dòng include thứ 2, vì x = 10, nên x += 10 => x = 20.</br>";
 ?>
+<a href="./lab4_7b.php">Lab4_7b</a>
 </body>
 </html>

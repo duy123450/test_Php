@@ -18,7 +18,7 @@ echo "a + x = ".($a+$x)."<br/>";
 echo "x + a = ".($x+$a)."<br/>";
 echo "Ghép chuỗi: $s"."<br/>";
 echo "Phân biệt == và === :";
-if($a===$x)
+if($a === $x)
 	echo "a và x giống nhau";
 else 
 	echo "a và x khác nhau";

@@ -19,7 +19,8 @@
 	Màn hình xuất kq là 10 thay vì 20. 
 	Nhưng báo lỗi vì biến x chưa được khởi tạo. 
 	require_once giông như require, nhưng file chỉ được 
-	bao gồm 1 lần duy nhất.";
+	bao gồm 1 lần duy nhất.</br>";
 ?>
+<a href="./lab4_6b.php">Lab4_6b</a>
 </body>
 </html>
