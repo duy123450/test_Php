@@ -8,6 +8,9 @@ RUN set -eux; \
 	apt-get clean; \
 	rm -rf /var/lib/apt/lists/*
 
+# Enable Apache mod_rewrite module
+RUN a2enmod rewrite
+
 # Copy all files from your project into the web directory
 COPY . /var/www/html/
 
