@@ -21,9 +21,6 @@ if ($gt == "") $err .= "Phải chọn giới tính <br>";
 
 $arrImg = array("image/png", "image/jpeg", "image/bmp");
 $err = "";
-
-$arrImg = array("image/png", "image/jpeg", "image/bmp");
-$err = "";
 $uploadedFiles = []; 
 
 if (!isset($_FILES['hinh']) || !is_array($_FILES['hinh']['name'])) {
