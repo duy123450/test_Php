@@ -1,0 +1,138 @@
+<?php
+function postIndex($index, $value = "")
+{
+	if (!isset($_POST[$index]))	return $value;
+	return trim($_POST[$index]);
+}
+
+function nestedHash($psw)
+{
+	$md5Hash = md5($psw);
+	$nestedHash = sha1($md5Hash);
+	return $nestedHash;
+}
+
+$username 	= postIndex("username");
+$password1	= postIndex("password1");
+$password2	= postIndex("password2");
+$name		= postIndex("name");
+$sm 		= postIndex("submit");
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Lab6_1</title>
+	<style>
+		fieldset {
+			width: 50%;
+			margin: 100px auto;
+		}
+
+		.info {
+			width: 600px;
+			color: #006;
+			background: #6FC;
+			margin: 0 auto
+		}
+	</style>
+</head>
+
+<body>
+	<fieldset>
+		<legend style="margin:0 auto">Thông tin đăng ký</legend>
+		<form action="lab06_4_1.php" method="post" enctype="multipart/form-data">
+			<table align="center">
+				<tr>
+					<td>Tên đăng nhập:</td>
+					<td><input type="text" name="username"
+							value="<?php echo $username; ?>"></td>
+				</tr>
+				<tr>
+					<td>Mật khẩu:</td>
+					<td><input type="password" name="password1" /></td>
+				</tr>
+				<tr>
+					<td>Nhập lại mật khẩu:</td>
+					<td><input type="password" name="password2" /></td>
+				</tr>
+				<tr>
+					<td>Họ Tên:</td>
+					<td><input type="text" name="name" value="<?php echo $name; ?>" /></td>
+				</tr>
+				<tr>
+					<td>Nhập thông tin:</td>
+					<td>
+						<textarea name="thong_tin" id="" cols="30" rows="10">Đây là một ví dụ.
+						<p>Có thẻ HTML</p>
+						Và một ký tự nháy đơn: '</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value="submit" name="submit"></td>
+				</tr>
+			</table>
+		</form>
+	</fieldset>
+	<?php
+
+	if ($sm != "") {
+		$err = "";
+		if (strlen($username) < 6) 		$err .= " Username ít nhất phải 6 ký tự!<br>";
+		if ($password1 != $password2) 	$err .= "Mật khẩu và mật khẩu nhập lại không khớp. <br>";
+		if (strlen($password1) < 8) 		$err .= "Mật khẩu phải ít nhất 8 ký tự.<br>";
+		if (str_word_count($name) < 2) 	$err .= "Họ tên phải chứa ít nhất 2 từ ";
+
+		if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['thong_tin'])) {
+
+			$thong_tin_raw = $_POST['thong_tin'];
+
+			echo "<h2>Kết quả xử lý:</h2>";
+			echo "---";
+
+			$step1_no_html = strip_tags($thong_tin_raw);
+			echo "<h3>1. Loại bỏ HTML:</h3>";
+			echo htmlentities($step1_no_html) . "<br><br>";
+
+			$step2_with_br = nl2br($step1_no_html);
+			echo "<h3>2. Thay thế \\n bằng &lt;br&gt;:</h3>";
+			echo $step2_with_br . "<br><br>";
+
+			$step3_add_slashes = addslashes($step1_no_html);
+			echo "<h3>3. Thêm \\ trước ' (addslashes):</h3>";
+			echo htmlentities($step3_add_slashes) . "<br><br>";
+
+			$step4_remove_slashes = stripslashes($step3_add_slashes);
+			echo "<h3>4. Loại bỏ \\ trước ' (stripslashes):</h3>";
+			echo htmlentities($step4_remove_slashes) . "<br><br>";
+
+			echo "---";
+
+			$final_processed_data = strip_tags($thong_tin_raw);
+			$final_processed_data = addslashes($final_processed_data);
+			$final_processed_data = stripslashes($final_processed_data);
+			$final_processed_data = nl2br($final_processed_data);
+
+			echo "<h2> Chuỗi sau khi xử lý HOÀN CHỈNH (Hiển thị sạch):</h2>";
+			echo $final_processed_data;
+		}
+	?>
+		<div class="info">
+			<?php
+			if ($err != "") echo $err;
+			else {
+				echo "Username: $username <br>";
+				echo "Mật khẩu đã mã hóa long giua MD5 va SHA1:" . nestedHash($password1) . "<br>";
+				echo "Họ tên: " . ucwords($name);
+			}
+			?>
+		</div>
+	<?php
+
+	}
+	?>
+</body>
+
+</html>

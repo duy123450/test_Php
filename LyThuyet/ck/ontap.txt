@@ -1,0 +1,9 @@
+Thời gian: 70-75p
+Hình thức:
+    - TN(8đ):   + Chọn A, B, C, D (3đ)
+                + Điền kq (5đ)
+
+    - TL(2đ):   + Mảng
+                + Object(OOP)
+                + PDO & DB
+Đc sd tài liệu giấy
